@@ -7,11 +7,19 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
-    "test:web": "cypress run --spec \"cypress/e2e/web/**/*.cy.js\"",
+    "test:web": "cypress run --spec \"cypress/e2e/web/**/*.feature\"",
     "test": "cypress run"
   },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/**/steps/**/*.js"
+    ]
+  },
   "devDependencies": {
-    "cypress": "^16.2.0"
+    "@badeball/cypress-cucumber-preprocessor": "^28.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "cypress": "^16.2.0",
+    "esbuild": "^0.28.2"
   },
   "repository": {
     "type": "git",
