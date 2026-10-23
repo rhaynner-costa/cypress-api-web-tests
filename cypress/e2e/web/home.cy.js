@@ -12,7 +12,7 @@ describe('Home', () => {
         },
       });
 
-      cy.url().should('eq', 'https://front.serverest.dev/admin/home');
+      cy.url().should('eq', `${Cypress.config('baseUrl')}/admin/home`);
       cy.contains('h1', 'Bem Vindo').should('be.visible');
     });
   });

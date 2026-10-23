@@ -1,7 +1,6 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  allowCypressEnv: false,
   expose: {
     apiUrl: process.env.CYPRESS_API_URL || 'https://serverest.dev',
   },

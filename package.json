@@ -11,7 +11,7 @@
     "test": "cypress run"
   },
   "devDependencies": {
-    "cypress": "^15.21.1"
+    "cypress": "^16.2.0"
   },
   "repository": {
     "type": "git",
