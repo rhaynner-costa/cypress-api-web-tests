@@ -1,0 +1,26 @@
+{
+  "name": "cypress-api-web-tests",
+  "version": "1.0.0",
+  "description": "\"Testes automatizados de api e web\"",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:web": "cypress run --spec \"cypress/e2e/web/**/*.cy.js\"",
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^15.21.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhaynner-costa/cypress-api-web-tests.git"
+  },
+  "author": "Rhaynner Costa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhaynner-costa/cypress-api-web-tests/issues"
+  },
+  "homepage": "https://github.com/rhaynner-costa/cypress-api-web-tests#readme"
+}
