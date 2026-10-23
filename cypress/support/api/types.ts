@@ -18,3 +18,17 @@ export interface LoginResponse {
   message: string;
   authorization: string;
 }
+
+export interface Usuario {
+  nome: string;
+  email: string;
+  password?: string;
+  administrador: string;
+  _id: string;
+}
+
+export interface UsuariosListResponse {
+  quantidade: number;
+  usuarios: Usuario[];
+}
+

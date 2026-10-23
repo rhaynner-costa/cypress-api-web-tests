@@ -1,2 +1,2 @@
 export { services } from './Services';
-export type { LoginCredentials, LoginResponse, WebParams } from './types';
+export type { LoginCredentials, LoginResponse, Usuario, UsuariosListResponse, WebParams } from './types';
