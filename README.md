@@ -5,7 +5,6 @@ Testes automatizados de API e web com Cypress.
 ## Requisitos
 
 - **Node.js 22.23.4** (versão usada no projeto e suportada pelo Cypress 16.2.0)
-- npm 11 ou superior
 - Cypress 16.2.0 (instalado via `npm install`)
 
 ## Instalação
@@ -25,9 +24,9 @@ npm run test:web   # executa apenas os testes web
 
 ## Variáveis de ambiente
 
-| Variável            | Padrão                        | Descrição              |
-| ------------------- | ----------------------------- | ---------------------- |
-| `CYPRESS_API_URL`   | `https://serverest.dev`       | URL base da API        |
+| Variável            | Padrão                        | Descrição                 |
+| ------------------- | ----------------------------- | ------------------------- |
+| `CYPRESS_API_URL`   | `https://serverest.dev`       | URL base da API           |
 | `CYPRESS_BASE_URL`  | `https://front.serverest.dev` | URL base da aplicação web |
 
 ## Estrutura
