@@ -1,5 +1,5 @@
-import { services } from '../../../support/api';
-import type { LoginCredentials } from '../../../support/api/types';
+import { services } from '../api';
+import type { LoginCredentials } from '../api/types';
 
 export class LoginLogic {
   static realizarLoginComCredenciaisValidas(credentials: LoginCredentials) {

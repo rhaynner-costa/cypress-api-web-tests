@@ -9,7 +9,7 @@ export default defineConfig({
   },
   e2e: {
     baseUrl: process.env.CYPRESS_BASE_URL || 'https://front.serverest.dev',
-    specPattern: 'cypress/e2e/{api/tests,web}/**/*.{cy.ts,feature}',
+    specPattern: 'cypress/e2e/**/*.{feature,cy.ts}',
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
       on(

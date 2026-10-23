@@ -1,5 +1,5 @@
-import login from '../../../fixtures/login.json';
-import { LoginLogic } from '../logic/LoginLogic';
+import login from '../../fixtures/login.json';
+import { LoginLogic } from '../../support/logic/LoginLogic';
 
 describe('Login', () => {
   it('realiza login com credenciais válidas', () => {

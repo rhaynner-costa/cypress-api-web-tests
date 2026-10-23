@@ -7,7 +7,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "typecheck": "tsc --noEmit",
-    "test:api": "cypress run --spec \"cypress/e2e/api/tests/**/*.cy.ts\"",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.ts\"",
     "test:web": "cypress run --spec \"cypress/e2e/web/**/*.feature\"",
     "test": "cypress run"
   },
