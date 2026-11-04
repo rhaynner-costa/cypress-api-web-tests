@@ -13,4 +13,8 @@ export class UsuariosService extends BaseApi {
   buscar(filtros: UsuariosFiltros = {}) {
     return this.listar(filtros);
   }
+
+  excluir(id: string) {
+    return this.delete(`/${id}`);
+  }
 }

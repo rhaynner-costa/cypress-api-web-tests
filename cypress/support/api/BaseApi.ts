@@ -38,4 +38,8 @@ export class BaseApi {
   protected post<T = unknown>(path = '', options: WebParams = {}) {
     return this.request<T>({ ...options, method: 'POST', path });
   }
+
+  protected delete<T = unknown>(path = '', options: WebParams = {}) {
+    return this.request<T>({ ...options, method: 'DELETE', path });
+  }
 }
