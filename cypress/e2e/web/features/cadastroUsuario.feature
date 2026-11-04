@@ -1,4 +1,5 @@
 # language: pt
+@cadastroUsuario
 Funcionalidade: Cadastro de usuario
 
   Cenário: Cadastrar um novo usuario com dados validos

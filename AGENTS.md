@@ -11,6 +11,7 @@
 - **Não altere código**, configurações ou documentação sem autorização explícita do usuário.
 - Após apresentar sugestões, aguarde a autorização antes de modificar arquivos.
 - **Somente altere** o escopo que o usuário aprovou; peça confirmação se houver dúvida.
+- **Siga exatamente a implementação aprovada pelo usuário:** não substitua por uma alternativa equivalente nem faça ajustes por conta própria. Se identificar erro ou limitação no código aprovado, explique o problema e peça autorização antes de adaptar a implementação.
 
 ## Preservação do código existente e regressão
 
