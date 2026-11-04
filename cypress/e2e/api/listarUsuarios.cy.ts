@@ -1,3 +1,5 @@
+import { services } from '../../support/api';
+import { JsonSchemaValidador } from '../../support/jsonSchemaValidador';
 import { UsuariosLogic } from '../../support/logic/UsuariosLogic';
 
 describe('Consulta Usuários', () => {
@@ -25,5 +27,9 @@ describe('Consulta Usuários', () => {
     UsuariosLogic.buscarUsuariosPorPassword({ password: 'teste' });
   });
 
-
+  it('CT007 - valida schema do retorno da busca de usuario', () => {
+    services.usuarios.buscar({ email: 'fulano@qa.com' }).then(({ body }) => {
+      return JsonSchemaValidador.validar('jsonSchema/ListaClienteSchema.json', body);
+    });
+  });
 });
