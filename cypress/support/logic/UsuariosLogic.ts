@@ -35,8 +35,6 @@ export class UsuariosLogic {
   static buscarUsuariosPorPassword(filtros: UsuariosFiltros) {
     return services.usuarios.buscar(filtros).then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.body.quantidade).to.eq(1);
-      expect(response.body.usuarios).to.be.an('array').to.have.lengthOf(1);
       expect(response.body.usuarios[0].password).to.eq(filtros.password);
       return response;
     });

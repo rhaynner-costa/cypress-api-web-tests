@@ -5,6 +5,14 @@ describe('Consulta Usuários', () => {
     UsuariosLogic.buscarUsuariosPorEmail({ email: 'fulano@qa.com' });
   });
 
+    it('CT002 - busca usuario com perfil administrador', () => {
+    UsuariosLogic.buscarUsuariosPerfilAdministrador({ administrador: 'true' });
+  });
+
+   it('CT003 - busca usuário com perfil padrao', () => {
+    UsuariosLogic.buscarUsuariosPerfilPadrao({ administrador: 'false' });
+  });
+
   it('CT004 - busca usuario por nome', () => {
     UsuariosLogic.buscarUsuariosPorNome({ nome: 'Fulano da Silva' });
   });
@@ -17,11 +25,5 @@ describe('Consulta Usuários', () => {
     UsuariosLogic.buscarUsuariosPorPassword({ password: 'teste' });
   });
 
-  it('CT002 - busca usuario com perfil administrador', () => {
-    UsuariosLogic.buscarUsuariosPerfilAdministrador({ administrador: 'true' });
-  });
 
-   it('CT003 - busca usuário com perfil padrao', () => {
-    UsuariosLogic.buscarUsuariosPerfilPadrao({ administrador: 'false' });
-  });
 });
