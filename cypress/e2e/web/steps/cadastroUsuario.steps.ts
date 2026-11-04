@@ -45,6 +45,22 @@ When('preencho os campos com dados válidos', () => {
   CadastrarUsuaiosLocators.inputSenha().type(usuario.password);
 });
 
+When(
+  'preencho o formulário com {string} , email {string} e senha {string}',
+  (nome: string, email: string, senha: string) => {
+    cy.wrap(email || null).as('emailUsuarioCadastrado');
+    if (nome) { //se tiver valor no schema ele digita, se nao deixa em branco. Cypresse nao aceita type vazio.
+      CadastrarUsuaiosLocators.inputNome().type(nome);
+    }
+    if (email) {
+      CadastrarUsuaiosLocators.inputEmail().type(email);
+    }
+    if (senha) {
+      CadastrarUsuaiosLocators.inputSenha().type(senha);
+    }
+  },
+);
+
 When('marco a checkbox de Administrador', () => {
   CadastrarUsuaiosLocators.inputCheckBox().check();
 });
@@ -86,4 +102,8 @@ Then('confirmo se o email do usuário cadastrado está na lista', () => {
       expect(body.usuarios.some((usuario) => usuario.email === emailUsuarioCadastrado)).to.eq(true);
       expect(body.usuarios[0].administrador).to.eq('false');
     });
+});
+
+Then('uma mensagem de erro deve ser exibida informando {string}', (mensagem: string) => {
+  cy.contains(mensagem).should('be.visible');
 });
