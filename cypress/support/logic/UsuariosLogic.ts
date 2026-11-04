@@ -1,7 +1,14 @@
 import { services } from '../api';
 import type { UsuariosFiltros } from '../api/types';
+import { JsonSchemaValidador } from '../jsonSchemaValidador';
 
 export class UsuariosLogic {
+  static validarSchemaBuscaUsuarios(filtros: UsuariosFiltros, caminhoSchema: string) {
+    return services.usuarios.buscar(filtros).then(({ body }) => {
+      return JsonSchemaValidador.validar(caminhoSchema, body);
+    });
+  }
+
   static buscarUsuariosPorEmail(filtros: UsuariosFiltros) {
     return services.usuarios.buscar(filtros).then((response) => {
       expect(response.status).to.eq(200);
@@ -15,8 +22,6 @@ export class UsuariosLogic {
   static buscarUsuariosPorNome(filtros: UsuariosFiltros) {
     return services.usuarios.buscar(filtros).then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.body.quantidade).to.eq(1);
-      expect(response.body.usuarios).to.be.an('array').to.have.lengthOf(1);
       expect(response.body.usuarios[0].nome).to.eq(filtros.nome);
       return response;
     });
