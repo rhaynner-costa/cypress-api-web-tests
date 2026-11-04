@@ -7,14 +7,22 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "typecheck": "tsc --noEmit",
-    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.ts\"",
-    "test:web": "cypress run --spec \"cypress/e2e/web/**/*.feature\"",
-    "test": "cypress run"
+    "test:api": "npm run clean:reports && cypress run --browser chrome --spec \"cypress/e2e/api/**/*.cy.ts\" && npm run report",
+    "test:web": "npm run clean:reports && cypress run --browser chrome --spec \"cypress/e2e/web/**/*.feature\"",
+    "test": "cypress run",
+    "clean:reports": "node -e \"require('node:fs').rmSync('cypress/reports', { recursive: true, force: true })\"",
+    "report:merge": "mochawesome-merge \"cypress/reports/mochawesome/raw/*.json\" > cypress/reports/mochawesome/merged.json",
+    "report:html": "marge cypress/reports/mochawesome/merged.json --reportDir cypress/reports/mochawesome/html --reportFilename report",
+    "report": "npm run report:merge && npm run report:html"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
       "cypress/e2e/**/steps/**/*.{js,ts}"
-    ]
+    ],
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber/report.html"
+    }
   },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^28.0.1",
@@ -23,6 +31,9 @@
     "ajv": "^8.20.0",
     "cypress": "^16.2.0",
     "esbuild": "^0.28.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.2",
     "typescript": "^7.0.2"
   },
   "repository": {

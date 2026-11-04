@@ -4,6 +4,13 @@ import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esb
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 
 export default defineConfig({
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/reports/mochawesome/raw',
+    overwrite: false,
+    html: false,
+    json: true,
+  },
   expose: {
     apiUrl: process.env.CYPRESS_API_URL || 'https://serverest.dev',
   },
