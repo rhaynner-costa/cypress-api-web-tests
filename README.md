@@ -19,10 +19,18 @@ npm install
 ```bash
 npm run cy:open    # abre o Cypress no modo interativo
 npm run cy:run     # executa todos os testes
-npm run test:api   # executa apenas os testes de API
-npm run test:web   # executa apenas os testes web
+npm run test:api   # limpa os relatórios, executa a API no Chrome e gera o HTML Mochawesome
+npm run test:web   # limpa os relatórios e executa os testes web no Chrome
+npm run report     # consolida os JSON Mochawesome existentes em HTML
 npm run typecheck  # valida os tipos com TypeScript
 ```
+
+Os scripts `test:api` e `test:web` removem `cypress/reports` no início de cada execução. Após os testes web via `cypress run`, o preprocessor Cucumber gera o relatório HTML. O modo interativo (`cy:open`) não gera automaticamente esses relatórios.
+
+Relatórios:
+
+- **API (Mochawesome):** `cypress/reports/mochawesome/html/report.html`
+- **Web (Cucumber):** `cypress/reports/cucumber/report.html`
 
 ## Padrão dos testes
 
@@ -45,11 +53,16 @@ cypress/
     web/
       features/         # cenários BDD (.feature)
       steps/            # step definitions (.steps.ts)
-  fixtures/             # massas de dados
+  fixtures/
+    jsonSchema/         # schemas JSON para validar respostas da API
+    login.json          # credenciais de teste
   support/
     api/                # BaseApi, services e tipos
+    logic/              # lógica e assertions reutilizadas pelos testes
     commands.ts         # custom commands
     e2e.ts              # support file
+    jsonSchemaValidador.ts # valida respostas usando AJV
+  reports/              # relatórios HTML e JSON gerados pelos testes
 cypress.config.ts
 tsconfig.json
 ```
