@@ -54,6 +54,23 @@ When('clico no botão "Cadastrar"', () => {
   CadastrarUsuaiosLocators.buttonCadastrar().click();
 });
 
+Then('confirmo se o email do usuário adm cadastrado está na lista', () => {
+  cy.wait('@cadastroUsuario').its('response.statusCode').should('eq', 201);
+
+  let emailUsuarioCadastrado: string;
+  cy.get<string>('@emailUsuarioCadastrado')
+    .then((email) => {
+      emailUsuarioCadastrado = email;
+      return services.usuarios.buscar({ email });
+    })
+    .then(({ status, body }) => {
+      expect(status).to.eq(200);
+      expect(body.usuarios).to.be.an('array');
+      expect(body.usuarios.some((usuario) => usuario.email === emailUsuarioCadastrado)).to.eq(true);
+      expect(body.usuarios[0].administrador).to.eq('true');
+    });
+});
+
 Then('confirmo se o email do usuário cadastrado está na lista', () => {
   cy.wait('@cadastroUsuario').its('response.statusCode').should('eq', 201);
 
@@ -67,5 +84,6 @@ Then('confirmo se o email do usuário cadastrado está na lista', () => {
       expect(status).to.eq(200);
       expect(body.usuarios).to.be.an('array');
       expect(body.usuarios.some((usuario) => usuario.email === emailUsuarioCadastrado)).to.eq(true);
+      expect(body.usuarios[0].administrador).to.eq('false');
     });
 });
